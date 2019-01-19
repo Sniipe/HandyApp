@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="HandyApp.Fitness.Views.RunningSessionPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--<Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>-->
+
+        <Label Grid.Row="2" Text="{Binding CurrentTime, StringFormat='{0:c}'}"/>
+        <Label Grid.Row="1" Text="{Binding CurrentSessionBlock.Set, StringFormat='Set: {0}'}"/>
+        <Label Grid.Row="0" Text="{Binding CurrentSessionBlock.Rep,StringFormat='Rep: {0}'}"/>
+        <Label Grid.Row="3" Text="{Binding CurrentSessionBlock.Type, StringFormat='Action: {0}'}"/>
+        <Button Grid.Row="4" Text="Start Session" Command="{Binding StartSessionCommand}"/>
+    </Grid>
+  
+</ContentPage>

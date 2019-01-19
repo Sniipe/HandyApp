@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:controls="clr-namespace:DateTimeOffsetPicker.Controls;assembly=DateTimeOffsetPicker"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="HandyApp.Fitness.Views.RunTrackerPage">
+    <StackLayout>
+        <Label Text="Set Interval"/>
+        <controls:TimeSpanPicker x:Name="SetIntervalPicker" TimeSpan="{Binding RunningSession.SetInterval}" />
+        <Label Text="Rep Interval"/>
+        <controls:TimeSpanPicker x:Name="RepIntervalPicker" TimeSpan="{Binding RunningSession.RepInterval}"/>
+        <Label Text="Rep Time"/>
+        <controls:TimeSpanPicker x:Name="RepTimePicker" TimeSpan="{Binding RunningSession.RepTimeSpan}"/>
+        <Label Text="Reps"/>
+        <Entry Text="{Binding RunningSession.Reps}" Keyboard="Numeric"/>
+        <Label Text="Sets"/>
+        <Entry Text="{Binding RunningSession.Sets}" Keyboard="Numeric"/>
+
+        <Button Text="Start Session" Command="{Binding StartSessionCommand}"></Button>
+    </StackLayout>
+  
+</ContentPage>

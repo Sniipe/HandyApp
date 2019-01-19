@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="HandyApp.Converters.Views.ConvertersHomePage">
+    <StackLayout>
+        <SearchBar Placeholder="Search Converters..." Text="{Binding SearchText}" SearchCommand="{Binding SearchConvertersCommand}"/>
+        <Button Text="Distance Converters" Command="{Binding NavigateCommand}" CommandParameter="DistanceConverterPage"/>
+        <Button Text="Currency Converters" Command="{Binding NavigateCommand}" CommandParameter="CurrencyConverterPage"/>
+        <Button Text="Currency Converters" Command="{Binding NavigateCommand}" CommandParameter="TempetureConverterPage"/>
+    </StackLayout>
+  
+</ContentPage>

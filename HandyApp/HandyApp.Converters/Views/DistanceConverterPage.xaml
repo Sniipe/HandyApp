@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="HandyApp.Converters.Views.DistanceConverterPage">
+    <Grid HorizontalOptions="Fill" Padding="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Text="Convert" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+        <Picker Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Distances}" SelectedItem="{Binding SelectedDistanceFrom}" Title="Select Distance..."/>
+        <Entry Grid.Row="1" Grid.Column="1" Text="{Binding DistanceFrom}" Placeholder="Enter a Value..."/>
+        <Picker Grid.Row="2" Grid.Column="0" ItemsSource="{Binding Distances}" SelectedItem="{Binding SelectedDistanceTo}" Title="Select Distance..."/>
+        <Entry Grid.Row="2" Grid.Column="1" Text="{Binding DistanceTo}" Placeholder="Enter a Value..."/>
+        
+        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="Convert" Command="{Binding ConvertCommand}"/>
+    </Grid>
+  
+</ContentPage>

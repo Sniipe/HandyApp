@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                  prism:ViewModelLocator.AutowireViewModel="True"
+                  x:Class="HandyApp.Views.HomePage">
+
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu">
+            <StackLayout Padding="20">
+                <Button Text="Home" Command="{Binding NavigateCommand}" CommandParameter="HomePage\NavigationPage\StartPage"/>
+                <Button Text="Converters" Command="{Binding NavigateCommand}" CommandParameter="NavigationPage\ConvertersHomePage"/>
+                <Button Text="Fitness" Command="{Binding NavigateCommand}" CommandParameter="NavigationPage\RunTrackerPage"/>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <ContentPage Title="Home">
+            <ActivityIndicator IsRunning="True"></ActivityIndicator>
+            </ContentPage>
+    </MasterDetailPage.Detail>
+    
+</MasterDetailPage>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="HandyApp.Converters.Views.CurrencyConverterPage">
+        <Grid HorizontalOptions="Fill">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="Convert:"></Label>
+            <Picker Grid.Column="1" ItemsSource="{Binding Currencys}" SelectedItem="{Binding ConvertFromCurrency}"/>
+            <Entry Grid.Row="0" Grid.Column="2" Text="{Binding Amount}"></Entry>
+            <Label Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" Text="To:"></Label>
+            <Picker Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Currencys}" SelectedItem="{Binding ConvertToCurrency}"></Picker>
+            <Entry Grid.Row="1" Grid.Column="2" Text="{Binding ConvertedValue}"></Entry>
+            <Button Grid.Row="2" Grid.Column="1" Text="Convert" Command="{Binding ConvertCurrencyCommand}"></Button>
+        </Grid>
+</ContentPage>
