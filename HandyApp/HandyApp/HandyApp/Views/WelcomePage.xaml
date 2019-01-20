@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="HandyApp.Views.WelcomePage">
+    <ContentPage x:Name="initPage">
+        <StackLayout>
+            <Label Text="Welcome To HandyApp!!" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+            <Button x:Name="initBtn" Text="Next"></Button>
+        </StackLayout>
+        
+    </ContentPage>
+    <ContentPage x:Name="continuePage">
+        <StackLayout>
+            <Label Text="Welcome To HandyApp!!" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+            <Button Command="{Binding NavigateCommand}" CommandParameter="HomePage/NavigationPage/StartPage" Text="Next"></Button>
+        </StackLayout>
+    </ContentPage>
+
+
+</CarouselPage>

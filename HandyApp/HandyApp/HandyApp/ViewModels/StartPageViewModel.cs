@@ -84,6 +84,7 @@ namespace HandyApp.ViewModels
                     }
 	            }
 	        };
+            RaisePropertyChanged(nameof(Categories));
 	        var apps = await GetApps();
 	        UserHasRecentApps = apps?.Count() > 0;
             RecentApps.Clear();

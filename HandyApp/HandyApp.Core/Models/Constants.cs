@@ -21,6 +21,11 @@ namespace HandyApp.Core.Models
                 NavigationLink = "TempetureConverterPage",
                 Name = "TempetureConverterPage"
             },
+            new App()
+            {
+                Name = "DistanceSpeedTimeCalculatorPage",
+                NavigationLink = "DistanceSpeedTimeCalculatorPage"
+            }
             
         };
     }

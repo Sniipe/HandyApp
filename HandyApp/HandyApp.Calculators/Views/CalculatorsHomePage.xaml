@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:prismb="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             Title="Calculators"
+             x:Class="HandyApp.Calculators.Views.CalculatorsHomePage">
+    <StackLayout>
+        <SearchBar Text="{Binding CalculatorSearchText}"></SearchBar>
+        <ListView ItemsSource="{Binding Calculators}" SelectedItem="{Binding SelectedApp}">
+            <ListView.ItemTemplate>
+                <DataTemplate><TextCell Text="{Binding Name}"></TextCell></DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                <prismb:EventToCommandBehavior EventName="ItemTapped" Command="{Binding NavigateToCalculatorCommand}"></prismb:EventToCommandBehavior>
+            </ListView.Behaviors>
+        </ListView>
+    </StackLayout>
+  
+</ContentPage>

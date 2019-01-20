@@ -8,9 +8,10 @@
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">
             <StackLayout Padding="20">
-                <Button Text="Home" Command="{Binding NavigateCommand}" CommandParameter="HomePage\NavigationPage\StartPage"/>
+                <Button Text="Home" Command="{Binding NavigateCommand}" CommandParameter="NavigationPage\StartPage"/>
                 <Button Text="Converters" Command="{Binding NavigateCommand}" CommandParameter="NavigationPage\ConvertersHomePage"/>
                 <Button Text="Fitness" Command="{Binding NavigateCommand}" CommandParameter="NavigationPage\RunTrackerPage"/>
+                <Button Text="Calculators" Command="{Binding NavigateCommand}" CommandParameter="NavigationPage\CalculatorsHomePage"/>
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using HandyApp.Calculators;
 using HandyApp.Converters;
 using HandyApp.Converters.Services;
 using HandyApp.Converters.Views;
@@ -33,7 +34,18 @@ namespace HandyApp
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("HomePage/NavigationPage/StartPage");
+            var secureStorageService = Container.Resolve<ISecureStorage>();
+            var isFirstTime = await secureStorageService.GetAsync("FirstLoad");
+            if (string.IsNullOrEmpty(isFirstTime))
+            {
+                await NavigationService.NavigateAsync("WelcomePage");
+            }
+            else
+            {
+                await NavigationService.NavigateAsync("HomePage/NavigationPage/StartPage");
+            }
+
+            
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -48,6 +60,7 @@ namespace HandyApp
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<HomePage, HomePageViewModel>();
             containerRegistry.RegisterForNavigation<StartPage, StartPageViewModel>();
+            containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
@@ -56,6 +69,7 @@ namespace HandyApp
             moduleCatalog.AddModule<CoreModule>();
             moduleCatalog.AddModule<ConvertersModule>();
             moduleCatalog.AddModule<FitnessModule>();
+            moduleCatalog.AddModule<CalculatorsModule>();
         }
     }
 }

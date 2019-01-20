@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+            xmlns:controls="clr-namespace:DateTimeOffsetPicker.Controls;assembly=DateTimeOffsetPicker"
+            prism:ViewModelLocator.AutowireViewModel="True"
+            xmlns:calType="clr-namespace:HandyApp.Calculators.Enums;assembly=HandyApp.Calculators"
+            Title="DST Calculator"
+            x:Class="HandyApp.Calculators.Views.DistanceSpeedTimeCalculatorPage">
+    <TabbedPage.Resources>
+        <ResourceDictionary>
+            <calType:DSTCalculationType x:Key="Time">Time</calType:DSTCalculationType>
+            <calType:DSTCalculationType x:Key="Distance">Distance</calType:DSTCalculationType>
+            <calType:DSTCalculationType x:Key="Speed">Speed</calType:DSTCalculationType>
+        </ResourceDictionary>
+    </TabbedPage.Resources>
+    
+    <ContentPage Title="Speed">
+        <StackLayout Margin="20" HorizontalOptions="FillAndExpand">
+            <Label Text="Time:"></Label>
+            <controls:TimeSpanPicker TimeSpan="{Binding SpeedCalculation.Time}"/>
+            <Label Text="Distance:"></Label>
+            <Grid HorizontalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Entry Keyboard="Numeric" Text="{Binding SpeedCalculation.DistanceText}" Placeholder="Value..." HorizontalOptions="FillAndExpand"></Entry>
+                <Picker Grid.Column="1" ItemsSource="{Binding DistanceUnits}" Title="Distance..." HorizontalOptions="FillAndExpand" SelectedItem="{Binding SpeedCalculation.DistanceUnit}"/>
+            </Grid>
+            <Label Text="Speed:"></Label>
+            <Picker ItemsSource="{Binding SpeedUnits}" SelectedItem="{Binding SpeedCalculation.SpeedUnit}"></Picker>
+            <Label Text="{Binding SpeedResult}"></Label>
+            <Button Text="Calculate" Command="{Binding CalculateCommand}" CommandParameter="{StaticResource Speed}"></Button>
+
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Distance">
+        <StackLayout Margin="20" HorizontalOptions="FillAndExpand">
+            <Label Text="Time:"></Label>
+            <controls:TimeSpanPicker TimeSpan="{Binding DistanceCalculation.Time}"/>
+            <Label Text="Speed:"></Label>
+            <Grid HorizontalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Entry Keyboard="Numeric" Text="{Binding DistanceCalculation.SpeedText}" Placeholder="Value..." HorizontalOptions="FillAndExpand"></Entry>
+                <Picker Grid.Column="1" ItemsSource="{Binding SpeedUnits}" Title="Speed Measurement..." HorizontalOptions="FillAndExpand" SelectedItem="{Binding DistanceCalculation.SpeedUnit}"/>
+            </Grid>
+            <Label Text="Distance:"></Label>
+            <Picker ItemsSource="{Binding DistanceUnits}" SelectedItem="{Binding DistanceCalculation.DistanceUnit}"></Picker>
+            <Label Text="{Binding DistanceResult}"></Label>
+            <Button Text="Calculate" Command="{Binding CalculateCommand}" CommandParameter="{StaticResource Distance}"></Button>
+
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Time">
+        
+        <StackLayout Margin="20" HorizontalOptions="FillAndExpand">
+            <!--<Label Text="Time:"></Label>
+            <controls:TimeSpanPicker TimeSpan="{Binding DistanceCalculation.Time}"/>-->
+            <Label Text="Speed:"></Label>
+            <Grid HorizontalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Entry Keyboard="Numeric" Text="{Binding TimeCalculation.SpeedText}" Placeholder="Value..." HorizontalOptions="FillAndExpand"></Entry>
+                <Picker Grid.Column="1" ItemsSource="{Binding SpeedUnits}" Title="Speed Measurement..." HorizontalOptions="FillAndExpand" SelectedItem="{Binding TimeCalculation.SpeedUnit}"/>
+            </Grid>
+            <Label Text="Distance:"></Label>
+            <Grid HorizontalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Entry Keyboard="Numeric" Text="{Binding TimeCalculation.DistanceText}" Placeholder="Value..." HorizontalOptions="FillAndExpand"></Entry>
+                <Picker Grid.Column="1" ItemsSource="{Binding DistanceUnits}" Title="Distance..." HorizontalOptions="FillAndExpand" SelectedItem="{Binding TimeCalculation.DistanceUnit}"/>
+            </Grid>
+            <Label Text="{Binding TimeResult}"></Label>
+            <Button Text="Calculate" Command="{Binding CalculateCommand}" CommandParameter="{StaticResource Time}"></Button>
+
+        </StackLayout>
+    </ContentPage>
+  
+</TabbedPage>

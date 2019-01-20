@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -24,10 +25,17 @@ namespace HandyApp.Core.ViewModels
 
         async void ExecuteCommandName(string page)
         {
+            var absoluteNav = UriKind.Relative;
             var target = page.Split('\\').Last();
             if (Constants.Apps.Any(x => x.Name.Equals(target)))
             {
                 await SaveRecentApp(new App {Name = target, NavigationLink = page});
+            }
+
+            if (page.Equals("HomePage/NavigationPage/StartPage"))
+            {
+                await SaveToStorageAsync("FirstLoad", "False");
+                absoluteNav = UriKind.Absolute;
             }
             await NavigationService.NavigateAsync(page);
         }
@@ -66,6 +74,10 @@ namespace HandyApp.Core.ViewModels
                     recentApps.Remove(appToRemove);
                 }
                 recentApps.Insert(0,app);
+                if (recentApps.Count > 5)
+                {
+                    recentApps.Remove(recentApps.FirstOrDefault());
+                }
                 var data = JsonConvert.SerializeObject(recentApps);
                 await SecureStorage.SetAsync("recentApps", data);
             }
