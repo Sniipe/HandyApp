@@ -6,7 +6,7 @@
              x:Class="HandyApp.Views.WelcomePage">
     <ContentPage x:Name="initPage">
         <StackLayout>
-            <Label Text="Welcome To HandyApp!!" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+            <Label Text="Welcome To HandyApp!" HorizontalOptions="Center" VerticalOptions="Center"></Label>
             <Button x:Name="initBtn" Text="Next"></Button>
         </StackLayout>
         
